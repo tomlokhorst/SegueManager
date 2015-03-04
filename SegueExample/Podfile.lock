@@ -1,0 +1,14 @@
+PODS:
+  - SegueManager (1.0.0)
+
+DEPENDENCIES:
+  - SegueManager (from `../`)
+
+EXTERNAL SOURCES:
+  SegueManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SegueManager: c1d887f338b3a5e4aa9541909f59b381af56636a
+
+COCOAPODS: 0.36.0.rc.1
