@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import SegueManager
 
 class MasterViewController: UIViewController {
 
-  private var textForDetail: String?
+  let segueManager: SegueManager!
 
-  @IBAction func openDetailAction(sender: UIButton) {
+  required init(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
 
-    // Save text for later
-    textForDetail = "This is the detail screen!"
-
-    // Kick off segue
-    self.performSegueWithIdentifier("showDetail", sender: self)
+    // Create a segue manager based on the current view controller
+    segueManager = SegueManager(viewController: self)
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Segue is underway, update destination ViewController with value set earlier
-    if let vc = segue.destinationViewController as? DetailViewController {
-      vc.displayText = textForDetail;
+    self.segueManager.prepareForSegue(segue);
+  }
+
+  @IBAction func openDetailAction(sender: UIButton) {
+
+    segueManager.performSegue("showDetail") { segue in
+      let vc = segue.destinationViewController as DetailViewController
+      vc.displayText = "This is the detail screen!"
     }
   }
 }
