@@ -11,7 +11,7 @@ import SegueManager
 
 class MasterViewController: UIViewController {
 
-  let segueManager: SegueManager!
+  var segueManager: SegueManager!
 
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -26,9 +26,8 @@ class MasterViewController: UIViewController {
 
   @IBAction func openDetailAction(sender: UIButton) {
 
-    segueManager.performSegue("showDetail") { segue in
-      let vc = segue.destinationViewController as DetailViewController
-      vc.displayText = "This is the detail screen!"
+    segueManager.performSegue("showDetail") { (detail: DetailViewController) in
+      detail.displayText = "This is the detail screen!"
     }
   }
 }
