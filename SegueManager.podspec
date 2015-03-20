@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.9.0"
   s.license      = "MIT"
 
-  s.summary      = "Easy Storyboards in Swift"
+  s.summary      = "Easy Storyboard segues in Swift"
 
   s.authors           = { "Tom Lokhorst" => "tom@lokhorst.eu" }
   s.social_media_url  = "https://twitter.com/tomlokhorst"
