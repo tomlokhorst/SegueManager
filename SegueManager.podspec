@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
 
   s.source          = { :git => "https://github.com/tomlokhorst/SegueManager.git", :tag => s.version }
   s.requires_arc    = true
-  s.source_files    = "SegueManager.swift"
+  s.source_files    = "ios/SegueManager.swift"
 
 end
