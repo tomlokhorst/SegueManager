@@ -2,7 +2,7 @@ PODS:
   - SegueManager (0.5.0):
     - SegueManager/iOS (= 0.5.0)
     - SegueManager/OSX (= 0.5.0)
-  - SegueManager/iOS (0.5.0)
+  - SegueManager/OSX (0.5.0)
 
 DEPENDENCIES:
   - SegueManager (from `../../`)

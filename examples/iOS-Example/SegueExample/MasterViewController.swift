@@ -21,7 +21,7 @@ class MasterViewController: UIViewController {
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    self.segueManager.prepareForSegue(segue);
+    segueManager.prepareForSegue(segue)
   }
 
   @IBAction func openDetailAction(sender: UIButton) {

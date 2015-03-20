@@ -7,22 +7,27 @@
 //
 
 import Cocoa
+import SegueManager
 
 class MasterViewController: NSViewController {
 
+  var segueManager: SegueManager!
+
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+
+    // Create a segue manager based on the current view controller
+    segueManager = SegueManager(viewController: self)
   }
 
   override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
-    if let detail = segue.destinationController as? DetailViewController {
-      detail.displayText = "This is the detail window!"
-    }
+    segueManager.prepareForSegue(segue)
   }
 
   @IBAction func openDetailAction(sender: NSButton) {
 
-    self.performSegueWithIdentifier("showDetail", sender: self)
+    segueManager.performSegue("showDetail") { (detail: DetailViewController) in
+      detail.displayText = "This is the detail window!"
+    }
   }
 }
-

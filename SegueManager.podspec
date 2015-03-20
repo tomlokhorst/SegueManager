@@ -9,10 +9,17 @@ Pod::Spec.new do |s|
   s.social_media_url  = "https://twitter.com/tomlokhorst"
   s.homepage          = "https://github.com/tomlokhorst/SegueManager"
 
-  s.ios.deployment_target = '8.0'
-
   s.source          = { :git => "https://github.com/tomlokhorst/SegueManager.git", :tag => s.version }
   s.requires_arc    = true
-  s.source_files    = "ios/SegueManager.swift"
+
+  s.subspec "iOS" do |ss|
+    ss.source_files = "ios/SegueManager.swift"
+    ss.ios.deployment_target = '8.0'
+  end
+
+  s.subspec "OSX" do |ss|
+    ss.source_files = "osx/SegueManager.swift"
+    ss.osx.deployment_target = '10.10'
+  end
 
 end
