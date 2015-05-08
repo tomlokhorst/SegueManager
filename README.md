@@ -81,6 +81,22 @@ The handler will be called after the destination ViewController has been instant
 
 Also see the original blog post: [Easy Storyboard segues in Swift](http://tomlokhorst.tumblr.com/post/104358251649/easy-storyboard-segues-in-swift).
 
+
+Segue identifiers
+-----------------
+
+_Side note:_
+I'm not really a fan of using string literals as segue identifiers. This can easily break when renaming segues in a storyboard.
+
+To fix that, I use the [`R.swift`](https://github.com/mac-cain13/R.swift) tool to get strongly typed segue identifiers. Using `R.swift` the example above becomes:
+
+```swift
+segueManager.performSegue(R.segue.showDetails) { (details: DetailsViewController) in
+    details.viewModel = DetailsViewModel("This is the details view model")
+}
+```
+
+
 Licence & Credits
 -----------------
 
