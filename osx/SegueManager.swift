@@ -31,9 +31,7 @@ public class SegueManager {
         handler(vc)
       }
       else {
-        // Note: This required Swift 1.2, in 1.0 type names are not properly shown.
-        println("Performing segue '\(identifier)'.")
-        println("However destinationController is of type '\(segue.destinationController.dynamicType)' not of expected type '\(T.self)'.")
+        print("Performing segue '\(identifier)' however destinationController is of type '\(segue.destinationController.dynamicType)' not of expected type '\(T.self)'.")
       }
     }
   }
@@ -57,7 +55,7 @@ public class SegueManager {
 
   @objc private func timeout(timer: NSTimer) {
     let segueIdentifier = timer.userInfo as? String ?? ""
-    println("Performed segue `\(segueIdentifier)', but handler not called.")
-    println("Forgot to call SeguemManager.prepareForSegue?")
+    print("Performed segue `\(segueIdentifier)', but handler not called.")
+    print("Forgot to call SeguemManager.prepareForSegue?")
   }
 }
