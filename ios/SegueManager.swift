@@ -25,15 +25,18 @@ public class SegueManager {
     viewController.performSegueWithIdentifier(identifier, sender: viewController)
   }
 
-  public func performSegue<T>(identifier: String, handler: T -> Void) {
+    public func performSegue<T>(identifier: String, skipNavigationController: Bool = false, handler: T -> Void) {
     performSegue(identifier) { segue in
-      if let vc = segue.destinationViewController as? T {
-        handler(vc)
-      }
-      else {
-        // Note: This required Swift 1.2, in 1.0 type names are not properly shown.
-        println("Performing segue '\(identifier)'.")
-        println("However destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(T.self)'.")
+        if let vc = segue.destinationViewController as? T {
+            handler(vc)
+        } else if skipNavigationController {
+            if let vc = (segue.destinationViewController as? UINavigationController)?.viewControllers.first as? T {
+                handler(vc)
+            }
+        } else {
+            // Note: This required Swift 1.2, in 1.0 type names are not properly shown.
+            println("Performing segue '\(identifier)'.")
+            println("However destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(T.self)'.")
       }
     }
   }
@@ -56,7 +59,6 @@ public class SegueManager {
   }
 
   @objc private func timeout(timer: NSTimer) {
-
     let segueIdentifier = timer.userInfo as? String ?? ""
     println("Performed segue `\(segueIdentifier)', but handler not called.")
     println("Forgot to call SeguemManager.prepareForSegue?")
