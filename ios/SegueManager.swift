@@ -25,18 +25,14 @@ public class SegueManager {
     viewController.performSegueWithIdentifier(identifier, sender: viewController)
   }
 
-    public func performSegue<T>(identifier: String, skipNavigationController: Bool = false, handler: T -> Void) {
+  public func performSegue<T>(identifier: String, handler: T -> Void) {
     performSegue(identifier) { segue in
-        if let vc = segue.destinationViewController as? T {
-            handler(vc)
-        } else if skipNavigationController {
-            if let vc = (segue.destinationViewController as? UINavigationController)?.viewControllers.first as? T {
-                handler(vc)
-            }
-        } else {
-            // Note: This required Swift 1.2, in 1.0 type names are not properly shown.
-            println("Performing segue '\(identifier)'.")
-            println("However destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(T.self)'.")
+      if let vc: T = viewControllerOfType(segue.destinationViewController as? UIViewController) {
+        handler(vc)
+      } else {
+        // Note: This required Swift 1.2, in 1.0 type names are not properly shown.
+        println("Performing segue '\(identifier)'.")
+        println("However destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(T.self)'.")
       }
     }
   }
@@ -61,6 +57,23 @@ public class SegueManager {
   @objc private func timeout(timer: NSTimer) {
     let segueIdentifier = timer.userInfo as? String ?? ""
     println("Performed segue `\(segueIdentifier)', but handler not called.")
-    println("Forgot to call SeguemManager.prepareForSegue?")
+    println("Forgot to call SegueManager.prepareForSegue?")
   }
+}
+
+
+// Smartly select a view controller of a specific type
+// For navigation and tabbar controllers, select the obvious view controller
+private func viewControllerOfType<T>(viewController: UIViewController?) -> T? {
+  if let vc = viewController as? T {
+    return vc
+  }
+  else if let vc = viewController as? UINavigationController {
+    return viewControllerOfType(vc.visibleViewController)
+  }
+  else if let vc = viewController as? UITabBarController {
+    return viewControllerOfType(vc.viewControllers?.first as? UIViewController)
+  }
+
+  return nil
 }
