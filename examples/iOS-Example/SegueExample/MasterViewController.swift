@@ -13,7 +13,7 @@ class MasterViewController: UIViewController {
 
   var segueManager: SegueManager!
 
-  required init(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
 
     // Create a segue manager based on the current view controller
