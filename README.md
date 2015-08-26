@@ -97,6 +97,15 @@ segueManager.performSegue(R.segue.showDetails) { (details: DetailsViewController
 ```
 
 
+Releases
+--------
+
+ - **1.0.0** - 2015-08-13 - Support for nested `UINavigationController` in destination
+ - 0.9.0 - 2015-03-20 - Print warning when forgot to call perpareForSegue
+ - **0.5.0** - 2015-03-05 - Initial public release
+ - 0.0.0 - 2014-10-12 - Initial private version for project at [Q42](http://q42.com)
+
+
 Licence & Credits
 -----------------
 

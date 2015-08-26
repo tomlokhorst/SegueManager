@@ -56,6 +56,6 @@ public class SegueManager {
   @objc private func timeout(timer: NSTimer) {
     let segueIdentifier = timer.userInfo as? String ?? ""
     print("Performed segue `\(segueIdentifier)', but handler not called.")
-    print("Forgot to call SeguemManager.prepareForSegue?")
+    print("Forgot to call SegueManager.prepareForSegue?")
   }
 }
