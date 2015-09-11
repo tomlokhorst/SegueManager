@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  SegueManager: ce0a52408627e210177668213559fa77d2fbdeff
+  SegueManager: 58105d74ca28b22f250eece4b1667fb732ae19d2
 
 COCOAPODS: 0.38.2

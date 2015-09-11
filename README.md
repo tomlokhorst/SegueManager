@@ -24,7 +24,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'SegueManager', '~> 0.9.0'
+pod 'SegueManager', '~> 1.0.0'
 ```
 
 Then, run the following command:
@@ -74,7 +74,7 @@ After this setup, simply call `performSegue` on the SegueManager and pass it a h
 
 ```swift
 segueManager.performSegue("showDetails") { (details: DetailsViewController) in
-    details.viewModel = DetailsViewModel("This is the details view model")
+  details.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 The handler will be called after the destination ViewController has been instantiated, but before its view has been loaded or any animations start.
@@ -92,7 +92,7 @@ To fix that, I use the [`R.swift`](https://github.com/mac-cain13/R.swift) tool t
 
 ```swift
 segueManager.performSegue(R.segue.showDetails) { (details: DetailsViewController) in
-    details.viewModel = DetailsViewModel("This is the details view model")
+  details.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
@@ -100,7 +100,8 @@ segueManager.performSegue(R.segue.showDetails) { (details: DetailsViewController
 Releases
 --------
 
- - **1.0.0** - 2015-08-13 - Support for nested `UINavigationController` in destination
+ - **1.0.0** - 2015-09-11 - Swift 2 support
+ - 0.9.1 - 2015-08-13 - Support for nested `UINavigationController` in destination
  - 0.9.0 - 2015-03-20 - Print warning when forgot to call perpareForSegue
  - **0.5.0** - 2015-03-05 - Initial public release
  - 0.0.0 - 2014-10-12 - Initial private version for project at [Q42](http://q42.com)
