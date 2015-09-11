@@ -6,7 +6,7 @@ The following example demonstrates how to perform a segue and set a view model:
 
 ```swift
 segueManager.performSegue("showDetails") { (details: DetailsViewController) in
-    details.viewModel = DetailsViewModel("This is the details view model")
+  details.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
