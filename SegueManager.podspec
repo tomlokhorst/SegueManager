@@ -16,12 +16,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.subspec "iOS" do |ss|
-    ss.source_files = "ios/SegueManager.swift"
+    ss.source_files = "src/ios/SegueManager.swift"
     ss.ios.deployment_target = '8.0'
   end
 
   s.subspec "OSX" do |ss|
-    ss.source_files = "osx/SegueManager.swift"
+    ss.source_files = "src/osx/SegueManager.swift"
     ss.osx.deployment_target = '10.10'
   end
 

@@ -38,8 +38,8 @@ $ pod install
 
 SegueManager is just a single file, so instead of using CocoaPods, you could also just copy it into your project:
 
- - [SegueManager.swift](https://github.com/tomlokhorst/SegueManager/blob/develop/ios/SegueManager.swift) for iOS
- - [SegueManager.swift](https://github.com/tomlokhorst/SegueManager/blob/develop/osx/SegueManager.swift) for OSX
+ - [SegueManager.swift](https://github.com/tomlokhorst/SegueManager/blob/develop/src/ios/SegueManager.swift) for iOS
+ - [SegueManager.swift](https://github.com/tomlokhorst/SegueManager/blob/develop/src/osx/SegueManager.swift) for OSX
 
 
 Usage
