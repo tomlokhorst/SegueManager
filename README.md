@@ -100,6 +100,7 @@ segueManager.performSegue(R.segue.showDetails) { (details: DetailsViewController
 Releases
 --------
 
+ - 1.1.0 - 2015-09-22 - Added Carthage support
  - **1.0.0** - 2015-09-11 - Swift 2 support
  - 0.9.1 - 2015-08-13 - Support for nested `UINavigationController` in destination
  - 0.9.0 - 2015-03-20 - Print warning when forgot to call perpareForSegue
