@@ -26,8 +26,9 @@ class MasterViewController: UIViewController {
 
   @IBAction func openDetailAction(sender: UIButton) {
 
-    segueManager.performSegue(R.segue.masterViewController.showDetail.identifier) { (detail: DetailViewController) in
-      detail.displayText = "This is the detail screen!"
+    segueManager.performSegue(R.segue.masterViewController.showDetail) { segueInfo in
+      let viewController = segueInfo.destinationViewController
+      viewController.displayText = "This is the detail screen!"
     }
   }
 }

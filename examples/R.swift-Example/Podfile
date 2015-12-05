@@ -3,4 +3,5 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'SegueManager', :path => '../../'
+pod 'SegueManager/R.swift', :path => '../../'
 pod 'R.swift.Library', :path => '../../../R.swift'
