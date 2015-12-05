@@ -1,0 +1,22 @@
+PODS:
+  - R.swift.Library (0.12.0)
+  - SegueManager (1.1.0):
+    - SegueManager/iOS (= 1.1.0)
+    - SegueManager/OSX (= 1.1.0)
+  - SegueManager/iOS (1.1.0)
+
+DEPENDENCIES:
+  - R.swift.Library (from `../../../R.swift`)
+  - SegueManager (from `../../`)
+
+EXTERNAL SOURCES:
+  R.swift.Library:
+    :path: ../../../R.swift
+  SegueManager:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  R.swift.Library: 82032bce0c71d414cf6deaaab833a96341528a58
+  SegueManager: 52de82b9f2aac4951a8dbaf45982d0acfd0293ee
+
+COCOAPODS: 0.39.0
