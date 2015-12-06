@@ -11,14 +11,7 @@ import SegueManager
 
 class MasterViewController: NSViewController {
 
-  var segueManager: SegueManager!
-
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-
-    // Create a segue manager based on the current view controller
-    segueManager = SegueManager(viewController: self)
-  }
+  lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
   override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
     segueManager.prepareForSegue(segue)
