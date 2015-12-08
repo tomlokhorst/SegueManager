@@ -1,8 +1,8 @@
 PODS:
-  - SegueManager (1.0.0):
-    - SegueManager/iOS (= 1.0.0)
-    - SegueManager/OSX (= 1.0.0)
-  - SegueManager/OSX (1.0.0)
+  - SegueManager (1.1.0):
+    - SegueManager/iOS (= 1.1.0)
+    - SegueManager/OSX (= 1.1.0)
+  - SegueManager/OSX (1.1.0)
 
 DEPENDENCIES:
   - SegueManager (from `../../`)
@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  SegueManager: 58105d74ca28b22f250eece4b1667fb732ae19d2
+  SegueManager: 52de82b9f2aac4951a8dbaf45982d0acfd0293ee
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
