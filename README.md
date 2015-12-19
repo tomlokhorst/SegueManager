@@ -96,6 +96,12 @@ segueManager.performSegue(R.segue.showDetails) { (details: DetailsViewController
 }
 ```
 
+To use R.swift together with SegueManager, include this subspec to your Podfile:
+
+```ruby
+pod 'SegueManager/R.swift'
+```
+
 
 Releases
 --------
