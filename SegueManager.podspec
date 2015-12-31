@@ -24,7 +24,14 @@ Pod::Spec.new do |s|
     ss.ios.deployment_target = '8.0'
     ss.source_files = "src/ios/SegueManager+Rswift.swift"
     ss.dependency "SegueManager/iOS"
-    ss.dependency "R.swift.Library"
+    ss.dependency "R.swift.Library", "~> 1.0.0.beta"
+  end
+
+  s.subspec "Convenience" do |ss|
+    ss.ios.deployment_target = '8.0'
+    ss.source_files = "src/ios/UIViewController+SegueManager.swift"
+    ss.dependency "SegueManager/iOS"
+    ss.dependency "SegueManager/R.swift"
   end
 
   s.subspec "OSX" do |ss|
