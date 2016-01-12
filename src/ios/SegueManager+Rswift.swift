@@ -16,7 +16,7 @@ extension SegueManager {
     handler: TypedStoryboardSegueInfo<Segue, Source, Destination> -> Void)
   {
     performSegue(segueIdentifier.identifier) { segue in
-      if let typedInfo = segue.typedInfoWithIdentifier(segueIdentifier) {
+      if let typedInfo = TypedStoryboardSegueInfo(segueIdentifier: segueIdentifier, segue: segue) {
         handler(typedInfo)
       }
       else {
