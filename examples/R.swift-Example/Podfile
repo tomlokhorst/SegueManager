@@ -2,6 +2,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'R.swift', '~> 1.0.0.beta'
-pod 'R.swift.Library', '~> 1.0.0.beta'
+pod 'R.swift'
 pod 'SegueManager/R.swift', :path => '../../'

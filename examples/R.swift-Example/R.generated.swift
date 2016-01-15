@@ -5,10 +5,9 @@ import Foundation
 import Rswift
 import UIKit
 
-struct R {
-  static func validate() {
-    storyboard.main.validateImages()
-    storyboard.main.validateViewControllers()
+struct R: Rswift.Validatable {
+  static func validate() throws {
+    try intern.validate()
   }
   
   struct file {
@@ -23,8 +22,18 @@ struct R {
     
   }
   
+  private struct intern: Rswift.Validatable {
+    static func validate() throws {
+      try _R.validate()
+    }
+  }
+  
   struct nib {
-    static var launchScreen: _R.nib._LaunchScreen { return _R.nib._LaunchScreen() }
+    static let launchScreen = _R.nib._LaunchScreen()
+    
+    static func launchScreen(_: Void) -> UINib {
+      return UINib(resource: R.nib.launchScreen)
+    }
   }
   
   struct reuseIdentifier {
@@ -33,49 +42,54 @@ struct R {
   
   struct segue {
     struct masterViewController {
-      static var showDetail: StoryboardSegueIdentifier<UIStoryboardSegue, MasterViewController, DetailViewController> { return StoryboardSegueIdentifier(identifier: "showDetail") }
+      static let showDetail: StoryboardSegueIdentifier<UIStoryboardSegue, MasterViewController, DetailViewController> = StoryboardSegueIdentifier(identifier: "showDetail")
+      
+      static func showDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, MasterViewController, DetailViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.masterViewController.showDetail, segue: segue)
+      }
     }
   }
   
   struct storyboard {
-    struct main {
-      static func initialViewController() -> UINavigationController? {
-        return instantiate().instantiateInitialViewController() as? UINavigationController
-      }
-      
-      static func instantiate() -> UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: _R.hostingBundle)
-      }
-      
-      static func validateImages() {
-        
-      }
-      
-      static func validateViewControllers() {
-        
-      }
+    static let main = _R.storyboard.main()
+    
+    static func main(_: Void) -> UIStoryboard {
+      return UIStoryboard(resource: R.storyboard.main)
     }
   }
 }
 
-struct _R {
-  static var hostingBundle: NSBundle? { return NSBundle(identifier: "com.nonstrict.SegueExample") }
+struct _R: Rswift.Validatable {
+  static let hostingBundle = NSBundle(identifier: "com.nonstrict.SegueExample")
+  
+  static func validate() throws {
+    try storyboard.validate()
+  }
   
   struct nib {
-    struct _LaunchScreen: NibResource {
-      var bundle: NSBundle? { return _R.hostingBundle }
-      var name: String { return "LaunchScreen" }
+    struct _LaunchScreen: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "LaunchScreen"
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> UIView? {
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
       }
+    }
+  }
+  
+  struct storyboard: Rswift.Validatable {
+    static func validate() throws {
+      try main.validate()
+    }
+    
+    struct main: Rswift.Validatable, StoryboardResourceWithInitialControllerType {
+      typealias InitialController = UINavigationController
       
-      func initialize() -> UINib {
-        return UINib.init(nibName: "LaunchScreen", bundle: _R.hostingBundle)
-      }
+      let bundle = _R.hostingBundle
+      let name = "Main"
       
-      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
-        return initialize().instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      static func validate() throws {
+        
       }
     }
   }
