@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "SegueManager"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.license      = "MIT"
 
-  s.summary      = "Easy Storyboard segues in Swift"
+  s.summary      = "Perform storyboard segues with closures, in Swift"
 
   s.authors           = { "Tom Lokhorst" => "tom@lokhorst.eu" }
   s.social_media_url  = "https://twitter.com/tomlokhorst"
