@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D526EF201C302187002B9A32 /* UIViewController+SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526EF1F1C302187002B9A32 /* UIViewController+SegueManager.swift */; };
 		E24EC7E61BB1605B009AFFB3 /* SegueManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E24EC7E51BB1605B009AFFB3 /* SegueManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; };
 		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D526EF1F1C302187002B9A32 /* UIViewController+SegueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+SegueManager.swift"; path = "ios/UIViewController+SegueManager.swift"; sourceTree = "<group>"; };
 		E24EC7E21BB1605B009AFFB3 /* SegueManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SegueManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24EC7E51BB1605B009AFFB3 /* SegueManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueManager.h; sourceTree = "<group>"; };
 		E24EC7E71BB1605B009AFFB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */,
 				E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */,
+				D526EF1F1C302187002B9A32 /* UIViewController+SegueManager.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28883181C1342C500AE2B8D /* SegueManager+Rswift.swift in Sources */,
+				D526EF201C302187002B9A32 /* UIViewController+SegueManager.swift in Sources */,
 				E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
