@@ -24,4 +24,10 @@ extension SegueManager {
       }
     }
   }
+
+  public func performSegue<Segue, Source, Destination>(
+    segueIdentifier: StoryboardSegueIdentifier<Segue, Source, Destination>)
+  {
+    performSegue(segueIdentifier.identifier) { _ in }
+  }
 }
