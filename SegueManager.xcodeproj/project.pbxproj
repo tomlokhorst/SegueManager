@@ -11,6 +11,7 @@
 		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; };
 		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; };
 		E28883181C1342C500AE2B8D /* SegueManager+Rswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */; };
+		E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueManager.swift; path = ios/SegueManager.swift; sourceTree = "<group>"; };
 		E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueManager.swift; path = osx/SegueManager.swift; sourceTree = "<group>"; };
 		E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SegueManager+Rswift.swift"; path = "ios/SegueManager+Rswift.swift"; sourceTree = "<group>"; };
+		E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllers.swift; path = ios/ViewControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */,
 				E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */,
+				E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			files = (
 				E28883181C1342C500AE2B8D /* SegueManager+Rswift.swift in Sources */,
 				E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */,
+				E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SegueManager"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.license      = "MIT"
 
   s.summary      = "Perform storyboard segues with closures, in Swift"
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.subspec "iOS" do |ss|
     ss.ios.deployment_target = '8.0'
-    ss.source_files = "src/ios/SegueManager.swift"
+    ss.source_files = "src/ios/SegueManager.swift", "src/ios/ViewControllers.swift"
   end
 
   s.subspec "R.swift" do |ss|

@@ -103,6 +103,7 @@ pod 'SegueManager/R.swift'
 Releases
 --------
 
+ - 1.3.0 - 2016-01-23 - Add `SegueManagerViewController` as `UIViewController` subclass
  - 1.2.0 - 2016-01-15 - Add R.swift support
  - 1.1.0 - 2015-09-22 - Added Carthage support
  - **1.0.0** - 2015-09-11 - Swift 2 support

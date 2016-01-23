@@ -36,3 +36,12 @@ extension SegueManager {
     performSegue(segueIdentifier.identifier) { _ in }
   }
 }
+
+extension HasSegueManager {
+  public func performSegue<Segue, Source, Destination>(
+    segueIdentifier: StoryboardSegueIdentifier<Segue, Source, Destination>,
+    handler: TypedStoryboardSegueInfo<Segue, Source, Destination> -> Void)
+  {
+    segueManager.performSegue(segueIdentifier, handler: handler)
+  }
+}
