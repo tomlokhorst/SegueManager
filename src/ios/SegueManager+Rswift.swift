@@ -20,7 +20,12 @@ extension SegueManager {
         handler(typedInfo)
       }
       else {
-        print("Performing segue '\(segueIdentifier.identifier)', however destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(Destination.self)'.")
+        let message = "Performing segue '\(segueIdentifier.identifier)', "
+          + "however destinationViewController is of type "
+          + "'\(segue.destinationViewController.dynamicType)' "
+          + "not of expected type '\(Destination.self)'."
+
+        fatalError(message)
       }
     }
   }

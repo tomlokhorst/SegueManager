@@ -7,15 +7,30 @@
 
 import UIKit
 
+private struct SourceLocation {
+  let file: String
+  let line: Int
+  let column: Int
+  let function: String
+}
+
 public class SegueManager {
   typealias Handler = UIStoryboardSegue -> Void
 
   private unowned let viewController: UIViewController
+  private let sourceLocation: SourceLocation
   private var handlers = [String: Handler]()
   private var timers = [String: NSTimer]()
 
-  public init(viewController: UIViewController) {
+  public init(
+    viewController: UIViewController,
+    file: String = __FILE__,
+    line: Int = __LINE__,
+    column: Int = __COLUMN__,
+    function: String = __FUNCTION__)
+  {
     self.viewController = viewController
+    self.sourceLocation = SourceLocation(file: file, line: line, column: column, function: function)
   }
 
   public func performSegue(identifier: String, handler: UIStoryboardSegue -> Void) {
@@ -31,12 +46,17 @@ public class SegueManager {
         handler(vc)
       }
       else {
-        print("Performing segue '\(identifier)', however destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(T.self)'.")
+        let message = "Performing segue '\(identifier)', "
+          + "however destinationViewController is of type "
+          + "'\(segue.destinationViewController.dynamicType)' "
+          + "not of expected type '\(T.self)'."
+
+        fatalError(message)
       }
     }
   }
 
-  public func performSegue(identifier : String) {
+  public func performSegue(identifier: String) {
     self.performSegue(identifier, handler: { _ in })
   }
 
@@ -55,8 +75,11 @@ public class SegueManager {
 
   @objc private func timeout(timer: NSTimer) {
     let segueIdentifier = timer.userInfo as? String ?? ""
-    print("Performed segue `\(segueIdentifier)', but handler not called.")
-    print("Forgot to call SegueManager.prepareForSegue?")
+    let message = "SegueManager created at \(sourceLocation.file):\(sourceLocation.line)\n"
+      + "Performed segue `\(segueIdentifier)', but handler not called.\n"
+      + "Forgot to call SegueManager.prepareForSegue?"
+
+    fatalError(message)
   }
 }
 
