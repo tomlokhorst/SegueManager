@@ -87,7 +87,7 @@ I'm not really a fan of using string literals as segue identifiers. This can eas
 To fix that, I use the [`R.swift`](https://github.com/mac-cain13/R.swift) tool to get strongly typed segues. Using `R.swift` the example above becomes:
 
 ```swift
-segueManager.performSegue(R.segue.masterViewController.showDetails) { segue in
+self.performSegue(R.segue.masterViewController.showDetails) { segue in
   let details = segue.destinationViewController
   details.viewModel = DetailsViewModel("This is the details view model")
 }
