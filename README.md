@@ -12,6 +12,30 @@ segueManager.performSegue("showDetails") { (details: DetailsViewController) in
 
 See the full [iOS example](https://github.com/tomlokhorst/SegueManager/blob/develop/examples/iOS-Example/SegueExample/MasterViewController.swift), or read below for usage instructions.
 
+
+Typed segues with R.swift
+-------------------------
+
+A major design goal of SegueManager 2.0 is to allow completely statically typed segues using [`R.swift`](https://github.com/mac-cain13/R.swift).
+
+With R.swift the above example becomes:
+
+```swift
+self.performSegue(R.segue.masterViewController.showDetails) { segue in
+  let details = segue.destinationViewController
+  details.viewModel = DetailsViewModel("This is the details view model")
+}
+```
+
+Here the `segue` parameter is of type: `TypedStoryboardSegueInfo<UIStoryboardSegue, MasterViewController, DetailViewController>`, which means the `.destinationViewController` field is of the correct type.
+
+To use R.swift together with SegueManager, include this subspec to your Podfile:
+
+```ruby
+pod 'SegueManager/R.swift'
+```
+
+
 Installation
 ------------
 
@@ -20,10 +44,6 @@ Installation
 SegueManager is available for both iOS and OS X. Using [CocoaPods](http://cocoapods.org), SegueManager can be integrated into your Xcode project by specifying it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-use_frameworks!
-
 pod 'SegueManager'
 ```
 
@@ -33,27 +53,22 @@ Then, run the following command:
 $ pod install
 ```
 
-
-### Manual
-
-SegueManager is just a single file, so instead of using CocoaPods, you could also just copy it into your project:
-
- - [SegueManager.swift](https://github.com/tomlokhorst/SegueManager/blob/develop/src/ios/SegueManager.swift) for iOS
- - [SegueManager.swift](https://github.com/tomlokhorst/SegueManager/blob/develop/src/osx/SegueManager.swift) for OSX
-
-
 Usage
 ---------
 
-Follow these steps to start using SegueManager:
+There are two methods of using SegueManager:
 
-1. On your ViewController, create a `SegueManager`, instantiated with `self`.
-2. Override `prepareForSegue` and call SegueManager.
+1. Inherit from one of the base types: `SegueManagerViewController`, `SegueManagerTableViewController`, `SegueManagerCollectionViewController`, etc.
+2. Or, if you don't want to rely on inheritance (often problematic), create a SegueManager yourself:
+
+  1. On your ViewController, create a `SegueManager`, instantiated with `self`.
+  2. Implement the `SeguePerformer` protocol
+  3. Override `prepareForSegue` and call SegueManager.
 
 ```swift
 import SegueManager
 
-class MasterViewController: UIViewController {
+class MasterViewController: UIViewController, SeguePerformer {
 
   lazy var segueManager: SegueManager = {
     // SegueManager based on the current view controller
@@ -66,25 +81,21 @@ class MasterViewController: UIViewController {
 }
 ```
 
-After this setup, simply call `performSegue` on the SegueManager and pass it a handler. Make sure you specify the type of the destination ViewController, since that can not be inferred:
+After this setup, simply call `performSegue` on self and pass it a handler.
+
+### With SegueManager only
+
+Call `performSegue` with a string identifier and pass a handler. Make sure you specify the type of the destination ViewController, since that can not be inferred:
 
 ```swift
-segueManager.performSegue("showDetails") { (details: DetailsViewController) in
+self.performSegue("showDetails") { (details: DetailsViewController) in
   details.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
-The handler will be called after the destination ViewController has been instantiated, but before its view has been loaded or any animations start.
 
-Also see the original blog post: [Easy Storyboard segues in Swift](http://tomlokhorst.tumblr.com/post/104358251649/easy-storyboard-segues-in-swift).
+### With SegueManager + R.swift
 
-
-Typed segue identifiers
------------------------
-
-_Side note:_
-I'm not really a fan of using string literals as segue identifiers. This can easily break when renaming segues in a storyboard.
-
-To fix that, I use the [`R.swift`](https://github.com/mac-cain13/R.swift) tool to get strongly typed segues. Using `R.swift` the example above becomes:
+Call `performSegue` with a segue identifier from `R.segue.*` and pass a handler.
 
 ```swift
 self.performSegue(R.segue.masterViewController.showDetails) { segue in
@@ -93,11 +104,7 @@ self.performSegue(R.segue.masterViewController.showDetails) { segue in
 }
 ```
 
-To use R.swift together with SegueManager, include this subspec to your Podfile:
-
-```ruby
-pod 'SegueManager/R.swift'
-```
+The handler will be called after the destination ViewController has been instantiated, but before its view has been loaded or any animations start.
 
 
 Releases
