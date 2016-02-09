@@ -22,8 +22,7 @@ With R.swift the above example becomes:
 
 ```swift
 self.performSegue(R.segue.masterViewController.showDetails) { segue in
-  let details = segue.destinationViewController
-  details.viewModel = DetailsViewModel("This is the details view model")
+  segue.destinationViewController.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
@@ -99,8 +98,7 @@ Call `performSegue` with a segue identifier from `R.segue.*` and pass a handler.
 
 ```swift
 self.performSegue(R.segue.masterViewController.showDetails) { segue in
-  let details = segue.destinationViewController
-  details.viewModel = DetailsViewModel("This is the details view model")
+  segue.destinationViewController.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
@@ -110,6 +108,7 @@ The handler will be called after the destination ViewController has been instant
 Releases
 --------
 
+ - **2.0.0** - 2016-02-10 - R.swift improvments
  - 1.3.0 - 2016-01-23 - Add `SegueManagerViewController` as `UIViewController` subclass
  - 1.2.0 - 2016-01-15 - Add R.swift support
  - 1.1.0 - 2015-09-22 - Added Carthage support
