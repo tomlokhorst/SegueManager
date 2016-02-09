@@ -9,7 +9,7 @@
 import UIKit
 import Rswift
 
-extension HasSegueManager {
+extension SeguePerformer {
   public func performSegue<Segue, Destination>(
     segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
     handler: TypedStoryboardSegueInfo<Segue, Self, Destination> -> Void)
@@ -37,7 +37,7 @@ extension HasSegueManager {
   }
 }
 
-extension StoryboardSegue where Source : HasSegueManager {
+extension StoryboardSegue where Source : SeguePerformer {
   public func performSegue(
     handler: TypedStoryboardSegueInfo<Segue, Source, Destination> -> Void)
   {
