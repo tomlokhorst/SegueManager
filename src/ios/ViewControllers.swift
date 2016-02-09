@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol HasSegueManager {
+public protocol SeguePerformer {
   var segueManager: SegueManager { get }
 }
 
-extension HasSegueManager {
+extension SeguePerformer {
   public func performSegue(identifier: String, handler: UIStoryboardSegue -> Void) {
     segueManager.performSegue(identifier, handler: handler)
   }
@@ -26,7 +26,7 @@ extension HasSegueManager {
   }
 }
 
-public class SegueManagerViewController : UIViewController, HasSegueManager {
+public class SegueManagerViewController : UIViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
   override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -34,7 +34,7 @@ public class SegueManagerViewController : UIViewController, HasSegueManager {
   }
 }
 
-public class SegueManagerCollectionViewController : UICollectionViewController, HasSegueManager {
+public class SegueManagerCollectionViewController : UICollectionViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
   override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -42,7 +42,7 @@ public class SegueManagerCollectionViewController : UICollectionViewController, 
   }
 }
 
-public class SegueManagerNavigationController : UINavigationController, HasSegueManager {
+public class SegueManagerNavigationController : UINavigationController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
   override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -50,7 +50,7 @@ public class SegueManagerNavigationController : UINavigationController, HasSegue
   }
 }
 
-public class SegueManagerTableViewController : UITableViewController, HasSegueManager {
+public class SegueManagerTableViewController : UITableViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
   override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

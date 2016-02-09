@@ -5,11 +5,7 @@ import Foundation
 import Rswift
 import UIKit
 
-struct R: Rswift.Validatable {
-  static func validate() throws {
-    try intern.validate()
-  }
-  
+struct R {
   struct file {
     
   }
@@ -20,12 +16,6 @@ struct R: Rswift.Validatable {
   
   struct image {
     
-  }
-  
-  private struct intern: Rswift.Validatable {
-    static func validate() throws {
-      try _R.validate()
-    }
   }
   
   struct nib {
@@ -59,12 +49,8 @@ struct R: Rswift.Validatable {
   }
 }
 
-struct _R: Rswift.Validatable {
+struct _R {
   static let hostingBundle = NSBundle(identifier: "com.nonstrict.SegueExample")
-  
-  static func validate() throws {
-    try storyboard.validate()
-  }
   
   struct nib {
     struct _LaunchScreen: NibResourceType {
@@ -77,20 +63,12 @@ struct _R: Rswift.Validatable {
     }
   }
   
-  struct storyboard: Rswift.Validatable {
-    static func validate() throws {
-      try main.validate()
-    }
-    
-    struct main: Rswift.Validatable, StoryboardResourceWithInitialControllerType {
+  struct storyboard {
+    struct main: StoryboardResourceWithInitialControllerType {
       typealias InitialController = UINavigationController
       
       let bundle = _R.hostingBundle
       let name = "Main"
-      
-      static func validate() throws {
-        
-      }
     }
   }
 }
