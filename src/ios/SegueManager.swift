@@ -24,10 +24,10 @@ public class SegueManager {
 
   public init(
     viewController: UIViewController,
-    file: String = __FILE__,
-    line: Int = __LINE__,
-    column: Int = __COLUMN__,
-    function: String = __FUNCTION__)
+    file: String = #file,
+    line: Int = #line,
+    column: Int = #column,
+    function: String = #function)
   {
     self.viewController = viewController
     self.sourceLocation = SourceLocation(file: file, line: line, column: column, function: function)
@@ -35,7 +35,7 @@ public class SegueManager {
 
   public func performSegue(identifier: String, handler: UIStoryboardSegue -> Void) {
     handlers[identifier] = handler
-    timers[identifier] = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timeout:", userInfo: identifier, repeats: false)
+    timers[identifier] = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(SegueManager.timeout(_:)), userInfo: identifier, repeats: false)
 
     viewController.performSegueWithIdentifier(identifier, sender: viewController)
   }

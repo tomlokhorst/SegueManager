@@ -20,7 +20,7 @@ public class SegueManager {
 
   public func performSegue(identifier: String, handler: NSStoryboardSegue -> Void) {
     handlers[identifier] = handler
-    timers[identifier] = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timeout:", userInfo: identifier, repeats: false)
+    timers[identifier] = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(SegueManager.timeout(_:)), userInfo: identifier, repeats: false)
 
     viewController.performSegueWithIdentifier(identifier, sender: viewController)
   }
