@@ -13,15 +13,15 @@ public protocol SeguePerformer {
 }
 
 extension SeguePerformer {
-  public func performSegue(identifier: String, handler: UIStoryboardSegue -> Void) {
+  public func performSegue(_ identifier: String, handler: (UIStoryboardSegue) -> Void) {
     segueManager.performSegue(identifier, handler: handler)
   }
 
-  public func performSegue<T>(identifier: String, handler: T -> Void) {
+  public func performSegue<T>(_ identifier: String, handler: (T) -> Void) {
     segueManager.performSegue(identifier, handler: handler)
   }
 
-  public func performSegue(identifier: String) {
+  public func performSegue(_ identifier: String) {
     segueManager.performSegue(identifier)
   }
 }
@@ -29,31 +29,31 @@ extension SeguePerformer {
 public class SegueManagerViewController : UIViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override public func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    segueManager.prepare(for: segue)
   }
 }
 
 public class SegueManagerCollectionViewController : UICollectionViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override public func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    segueManager.prepare(for: segue)
   }
 }
 
 public class SegueManagerNavigationController : UINavigationController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override public func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    segueManager.prepare(for: segue)
   }
 }
 
 public class SegueManagerTableViewController : UITableViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override public func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    segueManager.prepare(for: segue)
   }
 }

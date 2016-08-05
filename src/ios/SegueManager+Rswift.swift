@@ -11,8 +11,8 @@ import Rswift
 
 extension SeguePerformer {
   public func performSegue<Segue, Destination>(
-    segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
-    handler: TypedStoryboardSegueInfo<Segue, Self, Destination> -> Void)
+    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
+    handler: (TypedStoryboardSegueInfo<Segue, Self, Destination>) -> Void)
   {
     segueManager.performSegue(segueIdentifier.identifier) { segue in
 
@@ -31,7 +31,7 @@ extension SeguePerformer {
   }
 
   public func performSegue<Segue, Destination>(
-    segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>)
+    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>)
   {
     performSegue(segueIdentifier) { _ in }
   }
@@ -39,7 +39,7 @@ extension SeguePerformer {
 
 extension StoryboardSegue where Source : SeguePerformer {
   public func performSegue(
-    handler: TypedStoryboardSegueInfo<Segue, Source, Destination> -> Void)
+    _ handler: (TypedStoryboardSegueInfo<Segue, Source, Destination>) -> Void)
   {
     self.sourceViewController.segueManager.performSegue(self.identifier.identifier) { segue in
 
