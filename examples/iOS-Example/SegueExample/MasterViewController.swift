@@ -13,13 +13,13 @@ class MasterViewController: UIViewController {
 
   lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    segueManager.prepare(for: segue)
   }
 
-  @IBAction func openDetailAction(sender: UIButton) {
+  @IBAction func openDetailAction(_ sender: UIButton) {
 
-    segueManager.performSegue("showDetail") { (detail: DetailViewController) in
+    segueManager.performSegue(withIdentifier: "showDetail") { (detail: DetailViewController) in
       detail.displayText = "This is the detail screen!"
     }
   }

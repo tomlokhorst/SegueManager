@@ -13,47 +13,66 @@ public protocol SeguePerformer {
 }
 
 extension SeguePerformer {
-  public func performSegue(identifier: String, handler: UIStoryboardSegue -> Void) {
-    segueManager.performSegue(identifier, handler: handler)
+  public func performSegue(withIdentifier identifier: String, handler: @escaping (UIStoryboardSegue) -> Void) {
+    segueManager.performSegue(withIdentifier: identifier, handler: handler)
   }
 
-  public func performSegue<T>(identifier: String, handler: T -> Void) {
-    segueManager.performSegue(identifier, handler: handler)
+  public func performSegue<T>(withIdentifier identifier: String, handler: @escaping (T) -> Void) {
+    segueManager.performSegue(withIdentifier: identifier, handler: handler)
   }
 
-  public func performSegue(identifier: String) {
-    segueManager.performSegue(identifier)
-  }
-}
-
-public class SegueManagerViewController : UIViewController, SeguePerformer {
-  public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
-
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  public func performSegue(withIdentifier identifier: String) {
+    segueManager.performSegue(withIdentifier: identifier)
   }
 }
 
-public class SegueManagerCollectionViewController : UICollectionViewController, SeguePerformer {
+open class SegueManagerViewController : UIViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    segueManager.prepare(for: segue)
   }
 }
 
-public class SegueManagerNavigationController : UINavigationController, SeguePerformer {
+open class SegueManagerCollectionViewController : UICollectionViewController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    segueManager.prepare(for: segue)
   }
 }
 
-public class SegueManagerTableViewController : UITableViewController, SeguePerformer {
+open class SegueManagerNavigationController : UINavigationController, SeguePerformer {
   public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    segueManager.prepare(for: segue)
+  }
+}
+
+open class SegueManagerTableViewController : UITableViewController, SeguePerformer {
+  public lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
+
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    segueManager.prepare(for: segue)
+  }
+}
+
+// Swift 3 renames
+extension SeguePerformer {
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
+  public func performSegue(_ identifier: String, handler: @escaping (UIStoryboardSegue) -> Void) {
+    fatalError()
+  }
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
+  public func performSegue<T>(_ identifier: String, handler: @escaping (T) -> Void) {
+    fatalError()
+  }
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:)")
+  public func performSegue(_ identifier: String) {
+    fatalError()
   }
 }
