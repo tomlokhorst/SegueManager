@@ -5,52 +5,90 @@ import Foundation
 import Rswift
 import UIKit
 
+/// This `R` struct is code generated, and contains references to static resources.
 struct R {
+  /// This `R.color` struct is generated, and contains static references to 0 color palettes.
+  struct color {
+    fileprivate init() {}
+  }
+  
+  /// This `R.file` struct is generated, and contains static references to 0 files.
   struct file {
-    
+    fileprivate init() {}
   }
   
+  /// This `R.font` struct is generated, and contains static references to 0 fonts.
   struct font {
-    
+    fileprivate init() {}
   }
   
+  /// This `R.image` struct is generated, and contains static references to 0 images.
   struct image {
-    
+    fileprivate init() {}
   }
   
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
+    /// Nib `LaunchScreen`.
     static let launchScreen = _R.nib._LaunchScreen()
     
-    static func launchScreen(_: Void) -> UINib {
+    /// `UINib(name: "LaunchScreen", in: bundle)`
+    static func launchScreen(_: Void = ()) -> UINib {
       return UINib(resource: R.nib.launchScreen)
     }
-  }
-  
-  struct reuseIdentifier {
     
+    fileprivate init() {}
   }
   
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 0 reuse identifiers.
+  struct reuseIdentifier {
+    fileprivate init() {}
+  }
+  
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
+    /// This struct is generated for `MasterViewController`, and contains static references to 1 segues.
     struct masterViewController {
+      /// Segue identifier `showDetail`.
       static let showDetail: StoryboardSegueIdentifier<UIStoryboardSegue, MasterViewController, DetailViewController> = StoryboardSegueIdentifier(identifier: "showDetail")
       
-      static func showDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, MasterViewController, DetailViewController>? {
+      /// Optionally returns a typed version of segue `showDetail`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func showDetail(segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, MasterViewController, DetailViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.masterViewController.showDetail, segue: segue)
       }
+      
+      fileprivate init() {}
     }
+    
+    fileprivate init() {}
   }
   
+  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
   struct storyboard {
+    /// Storyboard `Main`.
     static let main = _R.storyboard.main()
     
-    static func main(_: Void) -> UIStoryboard {
+    /// `UIStoryboard(name: "Main", bundle: ...)`
+    static func main(_: Void = ()) -> UIStoryboard {
       return UIStoryboard(resource: R.storyboard.main)
     }
+    
+    fileprivate init() {}
   }
+  
+  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
+  struct string {
+    fileprivate init() {}
+  }
+  
+  fileprivate init() {}
 }
 
 struct _R {
-  static let hostingBundle = NSBundle(identifier: "com.nonstrict.SegueExample")
+  static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
+  static let hostingBundle = Bundle(identifier: "com.nonstrict.SegueExample") ?? Bundle.main
   
   struct nib {
     struct _LaunchScreen: NibResourceType {
@@ -58,9 +96,13 @@ struct _R {
       let name = "LaunchScreen"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIView
       }
+      
+      fileprivate init() {}
     }
+    
+    fileprivate init() {}
   }
   
   struct storyboard {
@@ -69,6 +111,12 @@ struct _R {
       
       let bundle = _R.hostingBundle
       let name = "Main"
+      
+      fileprivate init() {}
     }
+    
+    fileprivate init() {}
   }
+  
+  fileprivate init() {}
 }

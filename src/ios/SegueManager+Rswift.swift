@@ -11,10 +11,10 @@ import Rswift
 
 extension SeguePerformer {
   public func performSegue<Segue, Destination>(
-    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
-    handler: (TypedStoryboardSegueInfo<Segue, Self, Destination>) -> Void)
+    withIdentifier segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
+    handler: @escaping (TypedStoryboardSegueInfo<Segue, Self, Destination>) -> Void)
   {
-    segueManager.performSegue(segueIdentifier.identifier) { segue in
+    segueManager.performSegue(withIdentifier: segueIdentifier.identifier) { segue in
 
       if let typedInfo = TypedStoryboardSegueInfo(segueIdentifier: segueIdentifier, segue: segue) {
         handler(typedInfo)
@@ -23,7 +23,7 @@ extension SeguePerformer {
         let message = "Performing R.segue.???.\(segueIdentifier.identifier), "
           + "however not all types match up.\n"
           + "Requested: Segue: \(Segue.self), Source: \(Self.self), Destination: \(Destination.self).\n"
-          + "Actual: Segue: \(segue.dynamicType), Source: \(segue.sourceViewController.dynamicType), Destination: \(segue.destinationViewController.dynamicType)."
+          + "Actual: Segue: \(type(of: segue)), Source: \(type(of: segue.source)), Destination: \(type(of: segue.destination))."
 
         fatalError(message)
       }
@@ -31,17 +31,17 @@ extension SeguePerformer {
   }
 
   public func performSegue<Segue, Destination>(
-    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>)
+    withIdentifier segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>)
   {
-    performSegue(segueIdentifier) { _ in }
+    performSegue(withIdentifier: segueIdentifier) { _ in }
   }
 }
 
 extension StoryboardSegue where Source : SeguePerformer {
   public func performSegue(
-    _ handler: (TypedStoryboardSegueInfo<Segue, Source, Destination>) -> Void)
+    handler: @escaping (TypedStoryboardSegueInfo<Segue, Source, Destination>) -> Void)
   {
-    self.sourceViewController.segueManager.performSegue(self.identifier.identifier) { segue in
+    self.source.segueManager.performSegue(withIdentifier: self.identifier.identifier) { segue in
 
       if let typedInfo = TypedStoryboardSegueInfo(segueIdentifier: self.identifier, segue: segue) {
         handler(typedInfo)
@@ -50,10 +50,39 @@ extension StoryboardSegue where Source : SeguePerformer {
         let message = "Performing R.segue.???.\(self.identifier.identifier), "
           + "however not all types match up.\n"
           + "Requested: Segue: \(Segue.self), Source: \(Source.self), Destination: \(Destination.self).\n"
-          + "Actual: Segue: \(segue.dynamicType), Source: \(segue.sourceViewController.dynamicType), Destination: \(segue.destinationViewController.dynamicType)."
+          + "Actual: Segue: \(type(of: segue)), Source: \(type(of: segue.source)), Destination: \(type(of: segue.destination))."
 
         fatalError(message)
       }
     }
+  }
+}
+
+// Swift 3 renames
+extension SeguePerformer {
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
+  public func performSegue<Segue, Destination>(
+    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
+    handler: @escaping (TypedStoryboardSegueInfo<Segue, Self, Destination>) -> Void)
+  {
+    fatalError()
+  }
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:)")
+  public func performSegue<Segue, Destination>(
+    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>)
+  {
+    fatalError()
+  }
+}
+
+extension StoryboardSegue where Source : SeguePerformer {
+
+  @available(*, unavailable, renamed: "performSegue(handler:)")
+  public func performSegue(
+    _ handler: @escaping (TypedStoryboardSegueInfo<Segue, Source, Destination>) -> Void)
+  {
+    fatalError()
   }
 }

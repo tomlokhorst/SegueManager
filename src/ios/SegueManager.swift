@@ -33,22 +33,22 @@ public class SegueManager {
     self.sourceLocation = SourceLocation(file: file, line: line, column: column, function: function)
   }
 
-  public func performSegue(_ identifier: String, handler: (UIStoryboardSegue) -> Void) {
+  public func performSegue(withIdentifier identifier: String, handler: @escaping (UIStoryboardSegue) -> Void) {
     handlers[identifier] = handler
     timers[identifier] = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(SegueManager.timeout(_:)), userInfo: identifier, repeats: false)
 
     viewController.performSegue(withIdentifier: identifier, sender: viewController)
   }
 
-  public func performSegue<T>(_ identifier: String, handler: (T) -> Void) {
-    performSegue(identifier) { segue in
-      if let vc: T = viewControllerOfType(segue.destinationViewController) {
+  public func performSegue<T>(withIdentifier identifier: String, handler: @escaping (T) -> Void) {
+    performSegue(withIdentifier: identifier) { segue in
+      if let vc: T = viewControllerOfType(segue.destination) {
         handler(vc)
       }
       else {
         let message = "Performing segue '\(identifier)', "
           + "however destinationViewController is of type "
-          + "'\(segue.destinationViewController.dynamicType)' "
+          + "'\(type(of: segue.destination))' "
           + "not of expected type '\(T.self)'."
 
         fatalError(message)
@@ -56,8 +56,8 @@ public class SegueManager {
     }
   }
 
-  public func performSegue(_ identifier: String) {
-    self.performSegue(identifier, handler: { _ in })
+  public func performSegue(withIdentifier identifier: String) {
+    self.performSegue(withIdentifier: identifier, handler: { _ in })
   }
 
   public func prepare(for segue: UIStoryboardSegue) {
@@ -98,4 +98,28 @@ private func viewControllerOfType<T>(_ viewController: UIViewController?) -> T? 
   }
 
   return nil
+}
+
+// Swift 3 rename
+extension SegueManager {
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
+  public func performSegue(_ identifier: String, handler: @escaping (UIStoryboardSegue) -> Void) {
+    fatalError()
+  }
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
+  public func performSegue<T>(_ identifier: String, handler: @escaping (T) -> Void) {
+    fatalError()
+  }
+
+  @available(*, unavailable, renamed: "performSegue(withIdentifier:)")
+  public func performSegue(_ identifier: String) {
+    fatalError()
+  }
+
+  @available(*, unavailable, renamed: "prepare(for:)")
+  public func prepareForSegue(segue: UIStoryboardSegue) {
+    fatalError()
+  }
 }

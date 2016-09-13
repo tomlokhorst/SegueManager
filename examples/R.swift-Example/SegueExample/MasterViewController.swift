@@ -11,9 +11,9 @@ import SegueManager
 
 class MasterViewController: SegueManagerViewController {
 
-  @IBAction func openDetailAction(sender: UIButton) {
-    performSegue(R.segue.masterViewController.showDetail) { segue in
-      let detailController = segue.destinationViewController
+  @IBAction func openDetailAction(_ sender: UIButton) {
+    performSegue(withIdentifier: R.segue.masterViewController.showDetail) { segue in
+      let detailController = segue.destination
       detailController.displayText = "This is the detail screen!"
     }
   }
