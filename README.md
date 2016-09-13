@@ -1,11 +1,11 @@
 <img src="https://cloud.githubusercontent.com/assets/75655/6469027/8ef96b9e-c1d9-11e4-87a1-b76bfa3b820d.png" width="234" alt="SegueManager">
 <hr>
 
-With `SegueManager` it's easy to programatically perform segues and update the destinationViewController.
+With `SegueManager` it's easy to programatically perform segues and update the destination view controller.
 The following example demonstrates how to perform a segue and set a view model:
 
 ```swift
-segueManager.performSegue("showDetails") { (details: DetailsViewController) in
+segueManager.performSegue(withIdentifier: "showDetails") { (details: DetailsViewController) in
   details.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
@@ -21,12 +21,12 @@ A major design goal of SegueManager 2.0 is to allow completely statically typed 
 With R.swift the above example becomes:
 
 ```swift
-self.performSegue(R.segue.masterViewController.showDetails) { segue in
-  segue.destinationViewController.viewModel = DetailsViewModel("This is the details view model")
+self.performSegue(withIdentifier: R.segue.masterViewController.showDetails) { segue in
+  segue.destination.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
-Here the `segue` parameter is of type: `TypedStoryboardSegueInfo<UIStoryboardSegue, MasterViewController, DetailViewController>`, which means the `.destinationViewController` field is of the correct type.
+Here the `segue` parameter is of type: `TypedStoryboardSegueInfo<UIStoryboardSegue, MasterViewController, DetailViewController>`, which means the `.destination` field is of the correct type.
 
 To use R.swift together with SegueManager, include this subspec to your Podfile:
 
@@ -62,7 +62,7 @@ There are two methods of using SegueManager:
 
   1. On your ViewController, create a `SegueManager`, instantiated with `self`.
   2. Implement the `SeguePerformer` protocol
-  3. Override `prepareForSegue` and call SegueManager.
+  3. Override `prepare(for:)` and call SegueManager.
 
 ```swift
 import SegueManager
@@ -74,8 +74,8 @@ class MasterViewController: UIViewController, SeguePerformer {
     return SegueManager(viewController: self)
   }()
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
+  override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    segueManager.prepare(for: segue)
   }
 }
 ```
@@ -84,30 +84,31 @@ After this setup, simply call `performSegue` on self and pass it a handler.
 
 ### With SegueManager only
 
-Call `performSegue` with a string identifier and pass a handler. Make sure you specify the type of the destination ViewController, since that can not be inferred:
+Call `performSegue(withIdentifier)` with a string identifier and pass a handler. Make sure you specify the type of the destination ViewController, since that can not be inferred:
 
 ```swift
-self.performSegue("showDetails") { (details: DetailsViewController) in
+self.performSegue(withIdentifier: "showDetails") { (details: DetailsViewController) in
   details.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
 ### With SegueManager + R.swift
 
-Call `performSegue` with a segue identifier from `R.segue.*` and pass a handler.
+Call `performSegue(withIdentifier)` with a segue identifier from `R.segue.*` and pass a handler.
 
 ```swift
-self.performSegue(R.segue.masterViewController.showDetails) { segue in
-  segue.destinationViewController.viewModel = DetailsViewModel("This is the details view model")
+self.performSegue(withIdentifier: R.segue.masterViewController.showDetails) { segue in
+  segue.destination.viewModel = DetailsViewModel("This is the details view model")
 }
 ```
 
-The handler will be called after the destination ViewController has been instantiated, but before its view has been loaded or any animations start.
+The handler will be called after the destination view controller has been instantiated, but before its view has been loaded or any animations start.
 
 
 Releases
 --------
 
+ - **3.0.0** - 2016-09-13 - Swift 3 support
  - 2.1.0 - 2016-03-22 - Swift 2.2 support
  - **2.0.0** - 2016-02-10 - R.swift improvements
  - 1.3.0 - 2016-01-23 - Add `SegueManagerViewController` as `UIViewController` subclass
