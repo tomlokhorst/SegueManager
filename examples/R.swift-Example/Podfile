@@ -4,5 +4,5 @@ use_frameworks!
 
 target 'SegueExample'
 
-pod 'R.swift', :git => 'http://github.com/mac-cain13/R.swift'
+pod 'R.swift', '3.0.0.beta.1'
 pod 'SegueManager/R.swift', :path => '../../'

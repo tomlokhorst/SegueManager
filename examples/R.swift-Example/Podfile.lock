@@ -2,31 +2,24 @@ PODS:
   - R.swift (3.0.0.beta.1):
     - R.swift.Library (~> 3.0.0.beta.1)
   - R.swift.Library (3.0.0)
-  - SegueManager/iOS (2.1.0)
-  - SegueManager/R.swift (2.1.0):
+  - SegueManager/iOS (3.0.0)
+  - SegueManager/R.swift (3.0.0):
     - R.swift.Library
     - SegueManager/iOS
 
 DEPENDENCIES:
-  - R.swift (from `http://github.com/mac-cain13/R.swift`)
+  - R.swift (= 3.0.0.beta.1)
   - SegueManager/R.swift (from `../../`)
 
 EXTERNAL SOURCES:
-  R.swift:
-    :git: http://github.com/mac-cain13/R.swift
   SegueManager:
     :path: "../../"
-
-CHECKOUT OPTIONS:
-  R.swift:
-    :commit: 70cd17b9cc1d0aa6f48163496ccb990ba7b8e061
-    :git: http://github.com/mac-cain13/R.swift
 
 SPEC CHECKSUMS:
   R.swift: 301ce176b8f957dde958851f9461617fa8e17b23
   R.swift.Library: fed723da260519abed60044de7aaf19494cc4e1f
-  SegueManager: 07a64c4e8cd814b3e0f564ab838777af75951a29
+  SegueManager: c9cacc7b282ec9ee2362950866eb4c048c492251
 
-PODFILE CHECKSUM: 02e1f764b184310dcc025561e0221d9fdca51a8d
+PODFILE CHECKSUM: a08386f4205bf8059be5490744245089185352fc
 
 COCOAPODS: 1.1.0.rc.2
