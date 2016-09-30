@@ -1,6 +1,6 @@
 PODS:
-  - R.swift (3.0.0.beta.1):
-    - R.swift.Library (~> 3.0.0.beta.1)
+  - R.swift (3.0.0):
+    - R.swift.Library (~> 3.0.0)
   - R.swift.Library (3.0.0)
   - SegueManager/iOS (3.0.0)
   - SegueManager/R.swift (3.0.0):
@@ -8,7 +8,7 @@ PODS:
     - SegueManager/iOS
 
 DEPENDENCIES:
-  - R.swift (= 3.0.0.beta.1)
+  - R.swift
   - SegueManager/R.swift (from `../../`)
 
 EXTERNAL SOURCES:
@@ -16,10 +16,10 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  R.swift: 301ce176b8f957dde958851f9461617fa8e17b23
+  R.swift: 5a8b4a4ea565b0f20c39d8ce1445f3d3a9064768
   R.swift.Library: fed723da260519abed60044de7aaf19494cc4e1f
   SegueManager: c9cacc7b282ec9ee2362950866eb4c048c492251
 
-PODFILE CHECKSUM: a08386f4205bf8059be5490744245089185352fc
+PODFILE CHECKSUM: 1dbf929836c9c04d50a1aec3e0c6b654b13b04bb
 
 COCOAPODS: 1.1.0.rc.2
