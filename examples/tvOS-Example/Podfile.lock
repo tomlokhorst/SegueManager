@@ -1,0 +1,16 @@
+PODS:
+  - SegueManager/iOS (3.0.0)
+
+DEPENDENCIES:
+  - SegueManager/iOS (from `../../`)
+
+EXTERNAL SOURCES:
+  SegueManager:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  SegueManager: 92ae9f91a4c5cf8a74b4faa31291b59320b60835
+
+PODFILE CHECKSUM: 0341931376abcf46b1647b4f925d6e867f014620
+
+COCOAPODS: 1.1.1

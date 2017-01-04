@@ -12,11 +12,9 @@ Pod::Spec.new do |s|
   s.source          = { :git => "https://github.com/tomlokhorst/SegueManager.git", :tag => s.version }
   s.requires_arc    = true
 
-  s.osx.deployment_target = '10.10'
-  s.ios.deployment_target = '8.0'
-
   s.subspec "iOS" do |ss|
     ss.ios.deployment_target = '8.0'
+    ss.tvos.deployment_target = '9.0'
     ss.source_files = "src/ios/SegueManager.swift", "src/ios/ViewControllers.swift"
   end
 
