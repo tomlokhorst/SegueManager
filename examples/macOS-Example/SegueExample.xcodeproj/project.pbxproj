@@ -329,7 +329,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5A1CE937B84F5CCED02E8F4 /* Pods-SegueExample.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SegueExample/Info.plist;
@@ -344,7 +343,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B630DC3F2743347ADAE1558D /* Pods-SegueExample.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SegueExample/Info.plist;

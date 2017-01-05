@@ -10,11 +10,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SegueManager:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
-  SegueManager: c9cacc7b282ec9ee2362950866eb4c048c492251
+  SegueManager: 92ae9f91a4c5cf8a74b4faa31291b59320b60835
 
 PODFILE CHECKSUM: 1962f9160a253382bb076b4fd269239a0cb56182
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1

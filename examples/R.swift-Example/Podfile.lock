@@ -13,13 +13,13 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SegueManager:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
   R.swift: 5a8b4a4ea565b0f20c39d8ce1445f3d3a9064768
   R.swift.Library: fed723da260519abed60044de7aaf19494cc4e1f
-  SegueManager: c9cacc7b282ec9ee2362950866eb4c048c492251
+  SegueManager: 92ae9f91a4c5cf8a74b4faa31291b59320b60835
 
 PODFILE CHECKSUM: 1dbf929836c9c04d50a1aec3e0c6b654b13b04bb
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1
