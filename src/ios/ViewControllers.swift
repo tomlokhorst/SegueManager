@@ -57,22 +57,3 @@ open class SegueManagerTableViewController : UITableViewController, SeguePerform
     segueManager.prepare(for: segue)
   }
 }
-
-// Swift 3 renames
-extension SeguePerformer {
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
-  public func performSegue(_ identifier: String, handler: @escaping (UIStoryboardSegue) -> Void) {
-    fatalError()
-  }
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
-  public func performSegue<T>(_ identifier: String, handler: @escaping (T) -> Void) {
-    fatalError()
-  }
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:)")
-  public func performSegue(_ identifier: String) {
-    fatalError()
-  }
-}
