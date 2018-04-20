@@ -19,7 +19,7 @@ class MasterViewController: NSViewController {
 
   @IBAction func openDetailAction(_ sender: NSButton) {
 
-    segueManager.performSegue(withIdentifier: "showDetail") { (detail: DetailViewController) in
+    segueManager.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "showDetail")) { (detail: DetailViewController) in
       detail.displayText = "This is the detail window!"
     }
   }
