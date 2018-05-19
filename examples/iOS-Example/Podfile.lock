@@ -1,25 +1,29 @@
 PODS:
-  - R.swift.Library (3.0.0)
-  - SegueManager (3.0.0):
-    - SegueManager/iOS (= 3.0.0)
-    - SegueManager/OSX (= 3.0.0)
-    - SegueManager/R.swift (= 3.0.0)
-  - SegueManager/iOS (3.0.0)
-  - SegueManager/R.swift (3.0.0):
+  - R.swift.Library (4.0.0)
+  - SegueManager (4.0.0):
+    - SegueManager/iOS (= 4.0.0)
+    - SegueManager/OSX (= 4.0.0)
+    - SegueManager/R.swift (= 4.0.0)
+  - SegueManager/iOS (4.0.0)
+  - SegueManager/R.swift (4.0.0):
     - R.swift.Library
     - SegueManager/iOS
 
 DEPENDENCIES:
   - SegueManager (from `../../`)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - R.swift.Library
+
 EXTERNAL SOURCES:
   SegueManager:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  R.swift.Library: fed723da260519abed60044de7aaf19494cc4e1f
-  SegueManager: 92ae9f91a4c5cf8a74b4faa31291b59320b60835
+  R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  SegueManager: 8fb08da7e17135c1dbb8687e574be00f8019b164
 
 PODFILE CHECKSUM: d80574cff92b86feb5f21b2f7b4625598df3131b
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.0

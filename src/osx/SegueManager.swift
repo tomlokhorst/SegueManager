@@ -11,21 +11,20 @@ public class SegueManager {
   typealias Handler = (NSStoryboardSegue) -> Void
 
   private unowned let viewController: NSViewController
-  private var handlers = [String: Handler]()
-  private var timers = [String: Timer]()
+  private var handlers = [NSStoryboardSegue.Identifier: Handler]()
+  private var timers = [NSStoryboardSegue.Identifier: Timer]()
 
   public init(viewController: NSViewController) {
     self.viewController = viewController
   }
 
-  public func performSegue(withIdentifier identifier: String, handler: @escaping (NSStoryboardSegue) -> Void) {
+  public func performSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, handler: @escaping (NSStoryboardSegue) -> Void) {
     handlers[identifier] = handler
     timers[identifier] = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timeout), userInfo: identifier, repeats: false)
-
     viewController.performSegue(withIdentifier: identifier, sender: viewController)
   }
 
-  public func performSegue<T>(withIdentifier identifier: String, handler: @escaping (T) -> Void) {
+  public func performSegue<T>(withIdentifier identifier: NSStoryboardSegue.Identifier, handler: @escaping (T) -> Void) {
     performSegue(withIdentifier: identifier) { segue in
       if let vc = segue.destinationController as? T {
         handler(vc)
@@ -36,7 +35,7 @@ public class SegueManager {
     }
   }
 
-  public func performSegue(withIdentifier identifier: String) {
+  public func performSegue(withIdentifier identifier: NSStoryboardSegue.Identifier) {
     self.performSegue(withIdentifier: identifier, handler: { _ in })
   }
 
@@ -57,29 +56,5 @@ public class SegueManager {
     let segueIdentifier = timer.userInfo as? String ?? ""
     print("Performed segue `\(segueIdentifier)', but handler not called.")
     print("Forgot to call SegueManager.prepareForSegue?")
-  }
-}
-
-// Swift 3 renames
-extension SegueManager {
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
-  public func performSegue(_ identifier: String, handler: @escaping (NSStoryboardSegue) -> Void) {
-    fatalError()
-  }
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
-  public func performSegue<T>(_ identifier: String, handler: @escaping (T) -> Void) {
-    fatalError()
-  }
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:)")
-  public func performSegue(_ identifier : String) {
-    fatalError()
-  }
-
-  @available(*, unavailable, renamed: "prepare(for:)")
-  public func prepareForSegue(segue: NSStoryboardSegue) {
-    fatalError()
   }
 }

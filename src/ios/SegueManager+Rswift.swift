@@ -57,32 +57,3 @@ extension StoryboardSegue where Source : SeguePerformer {
     }
   }
 }
-
-// Swift 3 renames
-extension SeguePerformer {
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:handler:)")
-  public func performSegue<Segue, Destination>(
-    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>,
-    handler: @escaping (TypedStoryboardSegueInfo<Segue, Self, Destination>) -> Void)
-  {
-    fatalError()
-  }
-
-  @available(*, unavailable, renamed: "performSegue(withIdentifier:)")
-  public func performSegue<Segue, Destination>(
-    _ segueIdentifier: StoryboardSegueIdentifier<Segue, Self, Destination>)
-  {
-    fatalError()
-  }
-}
-
-extension StoryboardSegue where Source : SeguePerformer {
-
-  @available(*, unavailable, renamed: "performSegue(handler:)")
-  public func performSegue(
-    _ handler: @escaping (TypedStoryboardSegueInfo<Segue, Source, Destination>) -> Void)
-  {
-    fatalError()
-  }
-}
