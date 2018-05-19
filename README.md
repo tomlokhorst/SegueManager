@@ -107,7 +107,7 @@ The handler will be called after the destination view controller has been instan
 
 Releases
 --------
- - 4.0.0 - 2018-04-20 - Swift 4.1 support
+ - **4.0.0** - 2018-05-19 - Swift 4.1 support
  - 3.1.0 - 2017-01-05 - Add tvOS support
  - **3.0.0** - 2016-09-13 - Swift 3 support
  - 2.1.0 - 2016-03-22 - Swift 2.2 support
