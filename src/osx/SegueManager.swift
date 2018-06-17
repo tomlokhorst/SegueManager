@@ -8,52 +8,51 @@
 import Cocoa
 
 public class SegueManager {
-  typealias Handler = NSStoryboardSegue -> Void
+  typealias Handler = (NSStoryboardSegue) -> Void
 
   private unowned let viewController: NSViewController
-  private var handlers = [String: Handler]()
-  private var timers = [String: NSTimer]()
+  private var handlers = [NSStoryboardSegue.Identifier: Handler]()
+  private var timers = [NSStoryboardSegue.Identifier: Timer]()
 
   public init(viewController: NSViewController) {
     self.viewController = viewController
   }
 
-  public func performSegue(identifier: String, handler: NSStoryboardSegue -> Void) {
+  public func performSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, handler: @escaping (NSStoryboardSegue) -> Void) {
     handlers[identifier] = handler
-    timers[identifier] = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timeout:", userInfo: identifier, repeats: false)
-
-    viewController.performSegueWithIdentifier(identifier, sender: viewController)
+    timers[identifier] = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timeout), userInfo: identifier, repeats: false)
+    viewController.performSegue(withIdentifier: identifier, sender: viewController)
   }
 
-  public func performSegue<T>(identifier: String, handler: T -> Void) {
-    performSegue(identifier) { segue in
+  public func performSegue<T>(withIdentifier identifier: NSStoryboardSegue.Identifier, handler: @escaping (T) -> Void) {
+    performSegue(withIdentifier: identifier) { segue in
       if let vc = segue.destinationController as? T {
         handler(vc)
       }
       else {
-        print("Performing segue '\(identifier)' however destinationController is of type '\(segue.destinationController.dynamicType)' not of expected type '\(T.self)'.")
+        print("Performing segue '\(identifier)' however destinationController is of type '\(type(of: segue.destinationController))' not of expected type '\(T.self)'.")
       }
     }
   }
 
-  public func performSegue(identifier : String) {
-    self.performSegue(identifier, handler: { _ in })
+  public func performSegue(withIdentifier identifier: NSStoryboardSegue.Identifier) {
+    self.performSegue(withIdentifier: identifier, handler: { _ in })
   }
 
-  public func prepareForSegue(segue: NSStoryboardSegue) {
+  public func prepare(for segue: NSStoryboardSegue) {
     if let segueIdentifier = segue.identifier {
       timers[segueIdentifier]?.invalidate()
-      timers.removeValueForKey(segueIdentifier)
+      timers.removeValue(forKey: segueIdentifier)
 
       if let handler = handlers[segueIdentifier] {
         handler(segue)
 
-        handlers.removeValueForKey(segueIdentifier)
+        handlers.removeValue(forKey: segueIdentifier)
       }
     }
   }
 
-  @objc private func timeout(timer: NSTimer) {
+  @objc private func timeout(_ timer: Timer) {
     let segueIdentifier = timer.userInfo as? String ?? ""
     print("Performed segue `\(segueIdentifier)', but handler not called.")
     print("Forgot to call SegueManager.prepareForSegue?")

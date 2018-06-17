@@ -11,22 +11,15 @@ import SegueManager
 
 class MasterViewController: UIViewController {
 
-  var segueManager: SegueManager!
+  lazy var segueManager: SegueManager = { return SegueManager(viewController: self) }()
 
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-
-    // Create a segue manager based on the current view controller
-    segueManager = SegueManager(viewController: self)
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    segueManager.prepare(for: segue)
   }
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    segueManager.prepareForSegue(segue)
-  }
+  @IBAction func openDetailAction(_ sender: UIButton) {
 
-  @IBAction func openDetailAction(sender: UIButton) {
-
-    segueManager.performSegue("showDetail") { (detail: DetailViewController) in
+    segueManager.performSegue(withIdentifier: "showDetail") { (detail: DetailViewController) in
       detail.displayText = "This is the detail screen!"
     }
   }

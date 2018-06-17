@@ -1,0 +1,20 @@
+PODS:
+  - SegueManager (4.0.0):
+    - SegueManager/iOS (= 4.0.0)
+    - SegueManager/OSX (= 4.0.0)
+    - SegueManager/R.swift (= 4.0.0)
+  - SegueManager/OSX (4.0.0)
+
+DEPENDENCIES:
+  - SegueManager (from `../../`)
+
+EXTERNAL SOURCES:
+  SegueManager:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  SegueManager: 8fb08da7e17135c1dbb8687e574be00f8019b164
+
+PODFILE CHECKSUM: 1962f9160a253382bb076b4fd269239a0cb56182
+
+COCOAPODS: 1.5.0

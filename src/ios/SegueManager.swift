@@ -7,63 +7,86 @@
 
 import UIKit
 
+private struct SourceLocation {
+  let file: String
+  let line: Int
+  let column: Int
+  let function: String
+}
+
 public class SegueManager {
-  typealias Handler = UIStoryboardSegue -> Void
+  typealias Handler = (UIStoryboardSegue) -> Void
 
   private unowned let viewController: UIViewController
+  private let sourceLocation: SourceLocation
   private var handlers = [String: Handler]()
-  private var timers = [String: NSTimer]()
+  private var timers = [String: Timer]()
 
-  public init(viewController: UIViewController) {
+  public init(
+    viewController: UIViewController,
+    file: String = #file,
+    line: Int = #line,
+    column: Int = #column,
+    function: String = #function)
+  {
     self.viewController = viewController
+    self.sourceLocation = SourceLocation(file: file, line: line, column: column, function: function)
   }
 
-  public func performSegue(identifier: String, handler: UIStoryboardSegue -> Void) {
+  public func performSegue(withIdentifier identifier: String, handler: @escaping (UIStoryboardSegue) -> Void) {
     handlers[identifier] = handler
-    timers[identifier] = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "timeout:", userInfo: identifier, repeats: false)
+    timers[identifier] = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(SegueManager.timeout(_:)), userInfo: identifier, repeats: false)
 
-    viewController.performSegueWithIdentifier(identifier, sender: viewController)
+    viewController.performSegue(withIdentifier: identifier, sender: viewController)
   }
 
-  public func performSegue<T>(identifier: String, handler: T -> Void) {
-    performSegue(identifier) { segue in
-      if let vc: T = viewControllerOfType(segue.destinationViewController) {
+  public func performSegue<T>(withIdentifier identifier: String, handler: @escaping (T) -> Void) {
+    performSegue(withIdentifier: identifier) { segue in
+      if let vc: T = viewControllerOfType(segue.destination) {
         handler(vc)
       }
       else {
-        print("Performing segue '\(identifier)', however destinationViewController is of type '\(segue.destinationViewController.dynamicType)' not of expected type '\(T.self)'.")
+        let message = "Performing segue '\(identifier)', "
+          + "however destinationViewController is of type "
+          + "'\(type(of: segue.destination))' "
+          + "not of expected type '\(T.self)'."
+
+        fatalError(message)
       }
     }
   }
 
-  public func performSegue(identifier : String) {
-    self.performSegue(identifier, handler: { _ in })
+  public func performSegue(withIdentifier identifier: String) {
+    self.performSegue(withIdentifier: identifier, handler: { _ in })
   }
 
-  public func prepareForSegue(segue: UIStoryboardSegue) {
+  public func prepare(for segue: UIStoryboardSegue) {
     if let segueIdentifier = segue.identifier {
       timers[segueIdentifier]?.invalidate()
-      timers.removeValueForKey(segueIdentifier)
+      timers.removeValue(forKey: segueIdentifier)
 
       if let handler = handlers[segueIdentifier] {
         handler(segue)
 
-        handlers.removeValueForKey(segueIdentifier)
+        handlers.removeValue(forKey: segueIdentifier)
       }
     }
   }
 
-  @objc private func timeout(timer: NSTimer) {
+  @objc private func timeout(_ timer: Timer) {
     let segueIdentifier = timer.userInfo as? String ?? ""
-    print("Performed segue `\(segueIdentifier)', but handler not called.")
-    print("Forgot to call SegueManager.prepareForSegue?")
+    let message = "SegueManager created at \(sourceLocation.file):\(sourceLocation.line)\n"
+      + "Performed segue `\(segueIdentifier)', but handler not called.\n"
+      + "Forgot to call SegueManager.prepareForSegue?"
+
+    fatalError(message)
   }
 }
 
 
 // Smartly select a view controller of a specific type
 // For navigation and tabbar controllers, select the obvious view controller
-private func viewControllerOfType<T>(viewController: UIViewController?) -> T? {
+private func viewControllerOfType<T>(_ viewController: UIViewController?) -> T? {
   if let vc = viewController as? T {
     return vc
   }

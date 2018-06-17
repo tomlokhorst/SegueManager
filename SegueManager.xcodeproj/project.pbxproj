@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E24EC7E61BB1605B009AFFB3 /* SegueManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E24EC7E51BB1605B009AFFB3 /* SegueManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; settings = {ASSET_TAGS = (); }; };
-		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; settings = {ASSET_TAGS = (); }; };
+		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; };
+		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; };
+		E2A320DF1D54C8310027AF84 /* SegueManager+Rswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */; };
+		E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		E24EC7F21BB16669009AFFB3 /* SegueManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SegueManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueManager.swift; path = ios/SegueManager.swift; sourceTree = "<group>"; };
 		E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueManager.swift; path = osx/SegueManager.swift; sourceTree = "<group>"; };
+		E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SegueManager+Rswift.swift"; path = "ios/SegueManager+Rswift.swift"; sourceTree = "<group>"; };
+		E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllers.swift; path = ios/ViewControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */,
+				E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */,
+				E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -156,11 +162,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = nonstrict;
 				TargetAttributes = {
 					E24EC7E11BB1605B009AFFB3 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					E24EC7F11BB16669009AFFB3 = {
 						CreatedOnToolsVersion = 7.0;
@@ -208,6 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */,
+				E2A320DF1D54C8310027AF84 /* SegueManager+Rswift.swift in Sources */,
+				E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +338,7 @@
 				PRODUCT_NAME = SegueManager;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -347,6 +357,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nonstrict.SegueManager;
 				PRODUCT_NAME = SegueManager;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -387,6 +399,7 @@
 				PRODUCT_NAME = SegueManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
