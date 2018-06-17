@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E244145720D6927A006B9A3D /* SegueManager+Rswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */; };
 		E24EC7E61BB1605B009AFFB3 /* SegueManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E24EC7E51BB1605B009AFFB3 /* SegueManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; };
 		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; };
@@ -214,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */,
+				E244145720D6927A006B9A3D /* SegueManager+Rswift.swift in Sources */,
 				E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
