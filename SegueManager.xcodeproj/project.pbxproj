@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E244145720D6927A006B9A3D /* SegueManager+Rswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */; };
+		E244145A20D6937C006B9A3D /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E244145920D6937C006B9A3D /* Rswift.framework */; };
 		E24EC7E61BB1605B009AFFB3 /* SegueManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E24EC7E51BB1605B009AFFB3 /* SegueManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; };
 		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E244145920D6937C006B9A3D /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		E24EC7E21BB1605B009AFFB3 /* SegueManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SegueManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E24EC7E51BB1605B009AFFB3 /* SegueManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueManager.h; sourceTree = "<group>"; };
 		E24EC7E71BB1605B009AFFB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E244145A20D6937C006B9A3D /* Rswift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,11 +46,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E244145820D6937C006B9A3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E244145920D6937C006B9A3D /* Rswift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E24EC7D81BB1605B009AFFB3 = {
 			isa = PBXGroup;
 			children = (
 				E24EC7E41BB1605B009AFFB3 /* Source */,
 				E24EC7E31BB1605B009AFFB3 /* Products */,
+				E244145820D6937C006B9A3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -351,6 +363,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/src/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -372,6 +388,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/src/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
