@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDDD0A5921FB08BA00CCCED8 /* SegueManager+Rswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */; };
 		E24EC7E61BB1605B009AFFB3 /* SegueManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E24EC7E51BB1605B009AFFB3 /* SegueManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FD1BB16AC0009AFFB3 /* SegueManager.swift */; };
 		E24EC8011BB16AD3009AFFB3 /* SegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24EC7FF1BB16ACB009AFFB3 /* SegueManager.swift */; };
-		E2A320DF1D54C8310027AF84 /* SegueManager+Rswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28883171C1342C500AE2B8D /* SegueManager+Rswift.swift */; };
 		E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AD28BB1C541C5600C1D989 /* ViewControllers.swift */; };
 /* End PBXBuildFile section */
 
@@ -162,12 +162,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = nonstrict;
 				TargetAttributes = {
 					E24EC7E11BB1605B009AFFB3 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 					E24EC7F11BB16669009AFFB3 = {
 						CreatedOnToolsVersion = 7.0;
@@ -215,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E24EC7FE1BB16AC0009AFFB3 /* SegueManager.swift in Sources */,
-				E2A320DF1D54C8310027AF84 /* SegueManager+Rswift.swift in Sources */,
+				DDDD0A5921FB08BA00CCCED8 /* SegueManager+Rswift.swift in Sources */,
 				E2AD28BC1C541C5600C1D989 /* ViewControllers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,13 +239,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -288,13 +298,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -326,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -336,8 +357,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nonstrict.SegueManager;
 				PRODUCT_NAME = SegueManager;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -345,6 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -355,8 +376,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nonstrict.SegueManager;
 				PRODUCT_NAME = SegueManager;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -397,7 +417,6 @@
 				PRODUCT_NAME = SegueManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
