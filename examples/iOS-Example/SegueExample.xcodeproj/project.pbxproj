@@ -181,7 +181,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SegueExample/Pods-SegueExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SegueExample/Pods-SegueExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SegueManager/SegueManager.framework",
 			);
@@ -192,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SegueExample/Pods-SegueExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SegueExample/Pods-SegueExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		710624BD96D283542EF6E8BD /* [CP] Check Pods Manifest.lock */ = {
