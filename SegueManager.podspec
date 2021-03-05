@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SegueManager"
-  s.version      = "4.2.0"
+  s.version      = "5.0.0"
   s.license      = "MIT"
 
   s.summary      = "Perform storyboard segues with closures, in Swift"
