@@ -13,19 +13,19 @@ Pod::Spec.new do |s|
   s.requires_arc    = true
 
   s.osx.deployment_target = '10.10'
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
   
   s.swift_version = '5.1'
 
   s.subspec "iOS" do |ss|
-    ss.ios.deployment_target = '8.0'
+    ss.ios.deployment_target = '9.0'
     ss.tvos.deployment_target = '9.0'
     ss.source_files = "src/ios/SegueManager.swift", "src/ios/ViewControllers.swift"
   end
 
   s.subspec "R.swift" do |ss|
-    ss.ios.deployment_target = '8.0'
+    ss.ios.deployment_target = '9.0'
     ss.source_files = "src/ios/SegueManager+Rswift.swift"
     ss.dependency "SegueManager/iOS"
     ss.dependency "R.swift.Library"
